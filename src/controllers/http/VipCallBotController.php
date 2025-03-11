@@ -10,7 +10,7 @@ class VipCallBotController implements ControllerInterface
 {
     public function main(): void
     {
-        $bot = new VipCallBot('anti/telegram');
+        $bot = new VipCallBot('vipcallbot/telegram');
         $bot->run();
     }
 }
