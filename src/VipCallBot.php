@@ -4,7 +4,7 @@ namespace light\module\vipCallBot;
 
 use light\tg\bot\Bot;
 use light\module\vipCallBot\entities\User;
-use light\module\vipCallBot\commands\{
+use light\module\vipCallBot\commands\{AboutCommand,
     ContactsCommand,
     CooperationCommand,
     InternshipCommand,
@@ -17,6 +17,7 @@ class VipCallBot extends Bot
 {
     private static $_commands = [
         StartCommand::class,
+        AboutCommand::class,
         InternshipCommand::class,
         ScriptsCommand::class,
         CooperationCommand::class,
@@ -44,11 +45,5 @@ class VipCallBot extends Bot
             ['command' => $command, 'command_data' => $data],
             ['id' => $this->getUserId()]
         );
-    }
-
-
-    public function getDefaultHandler(): ?string
-    {
-        return null;
     }
 }
