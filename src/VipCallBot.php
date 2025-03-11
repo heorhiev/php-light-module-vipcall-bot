@@ -41,10 +41,6 @@ class VipCallBot extends Bot
 
     public function getDefaultHandler(): ?string
     {
-        if ($this->getIncomeMessage()->getUserShared()) {
-            return ShareUserCommand::class;
-        }
-
         return null;
     }
 }

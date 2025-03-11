@@ -12,7 +12,7 @@ class Bootstrap implements BootstrapInterface
 {
     public function bootstrap($app): void
     {
-        Http::addRoute('anti-bot-handler', VipCallBotController::class);
+        Http::addRoute('vip-call-bot-handler', VipCallBotController::class);
         AliasService::setPath('{@vipCallBotViews}', __DIR__ . '/views');
     }
 }
