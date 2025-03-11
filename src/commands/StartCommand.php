@@ -12,7 +12,7 @@ class StartCommand extends \light\tg\bot\models\Command
 {
     public static function getTitle(): string
     {
-        return Loco::translate('Start');
+        return Loco::translate('start');
     }
 
 

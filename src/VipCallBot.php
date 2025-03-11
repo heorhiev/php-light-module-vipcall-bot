@@ -16,7 +16,7 @@ use light\module\vipCallBot\commands\{AboutCommand,
 class VipCallBot extends Bot
 {
     private static $_commands = [
-        StartCommand::class,
+        'start' => StartCommand::class,
         AboutCommand::class,
         InternshipCommand::class,
         ScriptsCommand::class,
