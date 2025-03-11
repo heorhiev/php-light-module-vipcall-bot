@@ -4,18 +4,31 @@ namespace light\module\vipCallBot;
 
 use light\tg\bot\Bot;
 use light\module\vipCallBot\entities\User;
-use light\module\vipCallBot\commands\{CancelCommand, ShareUserCommand, GetReviewCommand, StartCommand, HelpCommand};
+use light\module\vipCallBot\commands\{
+    ContactsCommand,
+    CooperationCommand,
+    InternshipCommand,
+    ScriptsCommand,
+    SocialCommand,
+    StartCommand};
 
 
 class VipCallBot extends Bot
 {
     private static $_commands = [
-        'start' => StartCommand::class,
-        'add_review' => ShareUserCommand::class,
-        'get_review' => GetReviewCommand::class,
-        'help' => HelpCommand::class,
-        'cancel' => CancelCommand::class,
+        StartCommand::class,
+        InternshipCommand::class,
+        ScriptsCommand::class,
+        CooperationCommand::class,
+        SocialCommand::class,
+        ContactsCommand::class,
     ];
+
+
+    public static function getCommands(): array
+    {
+        return self::$_commands;
+    }
 
 
     public function getStoredCommand(): ?string
@@ -31,11 +44,6 @@ class VipCallBot extends Bot
             ['command' => $command, 'command_data' => $data],
             ['id' => $this->getUserId()]
         );
-    }
-
-    public static function getCommands(): array
-    {
-        return self::$_commands;
     }
 
 

@@ -2,14 +2,13 @@
 
 namespace light\module\vipCallBot\commands;
 
-
 use light\i18n\Loco;
 
-class HelpCommand extends \light\tg\bot\models\Command
+class ScriptsCommand extends \light\tg\bot\models\Command
 {
     public static function getTitle(): string
     {
-        return Loco::translate('Help');
+        return Loco::translate('База скриптів');
     }
 
 
@@ -17,7 +16,7 @@ class HelpCommand extends \light\tg\bot\models\Command
     {
         $message = $this->getBot()->getNewMessage();
 
-        $message->setMessageView('{@vipCallBotViews}/help');
+        $message->setMessageView('{@vipCallBotViews}/scripts');
 
         $this->getBot()->sendMessage($message);
     }
