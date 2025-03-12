@@ -37,6 +37,11 @@ trait StepCommandTrait
             return null;
         }
 
+        $incomeMessage = $this->getBot()->getIncomeMessage();
+        if ($incomeMessage->getFrom()->isBot()) {
+            $incomeMessage->delete();
+        }
+
         if ($data->video) {
             $this->getBot()->getBotApi()->sendVideo(
                 $this->getBot()->getUserId(),
