@@ -38,10 +38,7 @@ class User extends Entity
         $this->command_data = $data;
         $this->command_step = 0;
 
-        return (bool) self::repository()->update(
-            ['command' => $command, 'command_data' => $data, 'command_step' => 0],
-            ['id' => $this->id]
-        );
+        return $this->save();
     }
 
 
@@ -49,9 +46,12 @@ class User extends Entity
     {
         $this->command_step++;
 
-        return (bool) self::repository()->update(
-            ['command_step' => $this->command_step],
-            ['id' => $this->id]
-        );
+        return $this->save();
+    }
+
+
+    public function save(): bool
+    {
+        return (bool) self::repository()->update(get_object_vars($this), ['id' => $this->id]);
     }
 }
