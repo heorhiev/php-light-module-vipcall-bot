@@ -5,7 +5,7 @@ namespace light\module\vipCallBot\commands;
 use light\i18n\Loco;
 use light\module\vipCallBot\constants\BotConst;
 use light\module\vipCallBot\entities\User;
-use light\module\vipCallBot\helpers\MenuHelper;
+use light\module\vipCallBot\helpers\ButtonsHelper;
 
 
 class StartCommand extends \light\tg\bot\models\Command
@@ -24,7 +24,7 @@ class StartCommand extends \light\tg\bot\models\Command
 
         $menu = $this->getBot()->getMenu();
         if ($menu) {
-            $message->setKeyboardMarkup(MenuHelper::getDefaultMenuKeyboard($this->getBot()->getUserId(), $menu));
+            $message->setKeyboardMarkup(ButtonsHelper::getDefaultMenuKeyboard($this->getBot()->getUserId(), $menu));
         }
 
         $message->setMessageView('{@vipCallBotViews}/start');

@@ -3,21 +3,22 @@
 namespace light\module\vipCallBot\commands;
 
 use light\i18n\Loco;
+use light\module\vipCallBot\traits\StepCommandTrait;
+
 
 class AboutCommand extends \light\tg\bot\models\Command
 {
+    use StepCommandTrait;
+
+
     public static function getTitle(): string
     {
         return Loco::translate('Про компанію');
     }
 
 
-    public function run(): void
+    public static function getCode(): string
     {
-        $message = $this->getBot()->getNewMessage();
-
-        $message->setMessageView('{@vipCallBotViews}/about');
-
-        $this->getBot()->sendMessage($message);
+        return 'about';
     }
 }

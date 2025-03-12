@@ -25,6 +25,8 @@ class VipCallBot extends Bot
         ContactsCommand::class,
     ];
 
+    private $_user;
+
 
     public static function getCommands(): array
     {
@@ -34,16 +36,22 @@ class VipCallBot extends Bot
 
     public function getStoredCommand(): ?string
     {
-        $user = User::repository()->findById($this->getUserId())->asEntityOne();
-        return $user?->command;
+        return $this->getUser()?->command;
     }
 
 
     public function storeCommand($command, string $data = ''): bool
     {
-        return (bool) User::repository()->update(
-            ['command' => $command, 'command_data' => $data],
-            ['id' => $this->getUserId()]
-        );
+        return (bool) $this->getUser()->setCommand($command, $data);
+    }
+
+
+    public function getUser(): ?\light\orm\Entity
+    {
+        if (empty($this->_user)) {
+            $this->_user = User::repository()->findById($this->getUserId())->asEntityOne();
+        }
+
+        return $this->_user;
     }
 }

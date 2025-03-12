@@ -3,11 +3,12 @@
 namespace light\module\vipCallBot\helpers;
 
 use light\tg\bot\config\MenuDto;
+use TelegramBot\Api\Types\Inline\InlineKeyboardMarkup;
 use TelegramBot\Api\Types\ReplyKeyboardMarkup;
 use light\i18n\Loco;
 
 
-class MenuHelper
+class ButtonsHelper
 {
     /**
      * @param MenuDto[] $menu
@@ -30,5 +31,15 @@ class MenuHelper
     {
         $buttons[] = ['text' => Loco::translate('Cancel')];
         return new ReplyKeyboardMarkup([$buttons], true, true, true);
+    }
+
+
+    public static function getNextButton(): InlineKeyboardMarkup
+    {
+        return new InlineKeyboardMarkup([
+            [
+                ['text' => Loco::translate('Продовжити'), 'callback_data' => 'next'],
+            ]
+        ]);
     }
 }
