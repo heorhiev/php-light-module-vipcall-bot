@@ -22,11 +22,6 @@ class StartCommand extends \light\tg\bot\models\Command
 
         $message = $this->getBot()->getNewMessage();
 
-        $menu = $this->getBot()->getMenu();
-        if ($menu) {
-            $message->setKeyboardMarkup(ButtonsHelper::getDefaultMenuKeyboard($this->getBot()->getUserId(), $menu));
-        }
-
         $message->setMessageView('{@vipCallBotViews}/start');
 
         $this->getBot()->sendMessage($message);

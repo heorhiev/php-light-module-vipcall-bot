@@ -10,6 +10,8 @@ use light\module\vipCallBot\repository\UsersRepository;
 class User extends Entity
 {
     public $id;
+    public $name;
+    public $phone;
     public $command;
     public $command_data;
     public $command_step;
@@ -21,7 +23,7 @@ class User extends Entity
     {
         return [
             'integer' => ['id', 'command_step', 'status'],
-            'string' => ['command', 'command_data', 'created_at'],
+            'string' => ['name', 'phone', 'command', 'command_data', 'created_at'],
         ];
     }
 
@@ -29,6 +31,15 @@ class User extends Entity
     public static function repository(): Repository
     {
         return new UsersRepository(self::class);
+    }
+
+
+    public function setContact(\TelegramBot\Api\Types\Contact $contact): bool
+    {
+        $this->phone = $contact->getPhoneNumber();
+        $this->name = $contact->getFirstName();
+
+        return $this->save();
     }
 
 
@@ -47,6 +58,12 @@ class User extends Entity
         $this->command_step++;
 
         return $this->save();
+    }
+
+
+    public function isFilledContactData(): bool
+    {
+        return (bool) $this->phone;
     }
 
 

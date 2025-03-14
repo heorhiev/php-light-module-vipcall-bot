@@ -46,7 +46,7 @@ class VipCallBot extends Bot
     }
 
 
-    public function getUser(): ?\light\orm\Entity
+    public function getUser(): ?User
     {
         if (empty($this->_user)) {
             $this->_user = User::repository()->findById($this->getUserId())->asEntityOne();
