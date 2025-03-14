@@ -16,7 +16,7 @@ class ContactsCommand extends \light\tg\bot\models\Command
     {
         $message = $this->getBot()->getNewMessage();
 
-        $message->setMessageView('{@vipCallBotViews}/contacts');
+        $message->setMessageView('{@vipCallBotViews}/contacts/address');
 
         $this->getBot()->sendMessage($message);
     }

@@ -16,7 +16,7 @@ class SocialCommand extends \light\tg\bot\models\Command
     {
         $message = $this->getBot()->getNewMessage();
 
-        $message->setMessageView('{@vipCallBotViews}/social');
+        $message->setMessageView('{@vipCallBotViews}/contacts/social');
 
         $this->getBot()->sendMessage($message);
     }
